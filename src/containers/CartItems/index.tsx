@@ -1,26 +1,39 @@
 import styled from "styled-components";
-import { Product, AppState } from "../../models/index";
+import { Cart as CartModel, AppState, Product } from "../../models/index";
 import { useSelector, shallowEqual } from "react-redux";
 import { useEffect } from "react";
-import { Product as ProductComponent } from "../../components/Product";
+import { Cart  } from "../../components/Cart";
 
 export const CartItems = () => {
-  
-  const products: readonly Product[] = useSelector(
+  const cartItems: readonly CartModel[] = useSelector(
     (state: AppState) => state.cart,
     shallowEqual
   );
 
-  useEffect(() => {}, [products]);
+  const products: readonly Product[] = useSelector(
+    (state: AppState) => state.queryProducts,
+    shallowEqual
+  );
 
+  useEffect(() => {}, [cartItems[0].products]);
+
+  const getProductsStart = (id: number) => {
+    return products.find((prd) => prd.id === id);
+  };
   return (
     <Container>
-      {products && products.length > 0 ? (
+      {cartItems && cartItems.length > 0 ? (
         <>
           <h4>Cart Items</h4>
-          {products.map((product) => (
-            <ProductComponent product={product} />
-          ))}
+          {cartItems.map((cartItem, index) =>
+            cartItem.products.map((cartProduct, index) => (
+              <Cart
+                key={index}
+                product={getProductsStart(cartProduct.id)}
+                quantity={cartProduct.quantity}
+              />
+            ))
+          )}
         </>
       ) : (
         <h4>Empty</h4>
@@ -33,4 +46,7 @@ const Container = styled.div`
   margin-top: 3%;
   width: 30%;
   float: right;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 `;

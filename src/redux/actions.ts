@@ -10,10 +10,18 @@ export const addToCart = (product: Product) => {
   };
 };
 
+export const removeFromCart = (product?: Product) => {
+  return {
+    type: actionTypes.REMOVE_FROM_CART,
+    payload: product && 0,
+  };
+};
+
+;
 export const getProductsStart = (query: string) => {
   return (dispatch: Dispatch) => {
     axios
-      .get<Product[]>(`http://localhost:8080/products?_page=1&_limit=6`, {
+      .get<Product[]>(`http://localhost:8080/products?_page=1&_limit=8`, {
         headers: {
           Accept: "application/json",
         },

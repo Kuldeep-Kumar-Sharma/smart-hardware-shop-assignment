@@ -1,10 +1,10 @@
 import * as actionTypes from "./constants";
-import { AppState, AppAction, Product } from "../models/index";
+import { AppState, AppAction, Product, Cart } from "../models/index";
 
 const initialState: AppState = {
   recommendations: [],
-    queryProducts: [],
-  cart:[]
+  queryProducts: [],
+  cart: [],
 };
 const reducer = (
   state: AppState = initialState,
@@ -23,11 +23,34 @@ const reducer = (
         ...state,
         queryProducts: action.payload as Product[],
       };
-      case actionTypes.ADD_TO_CART:
-          const item = action.payload as Product;
-          return {
-              ...state,
-              cart: [...state.cart,item]
+    case actionTypes.ADD_TO_CART:
+      const item = action.payload as Product;
+      let updatedQuantity = [{ id: item.id, quantity: 1 }];
+      
+      if (state.cart.length > 0) {
+        for (let i = 0; i < state.cart.length; i++){
+          updatedQuantity = state.cart[i].products.map((prd) => {
+            return prd.id === item.id
+              ? { ...prd, quantity: prd.quantity + 1 }
+              : prd;
+          });
+        }
+      }
+      return {
+        ...state,
+        cart: [
+          {
+            ...state.cart,
+            id: 0,
+            products: updatedQuantity,
+          },
+        ],
+      };
+    case actionTypes.REMOVE_FROM_CART:
+      const deletingItem = action.payload as Cart;
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item !== deletingItem),
       };
   }
   return state;

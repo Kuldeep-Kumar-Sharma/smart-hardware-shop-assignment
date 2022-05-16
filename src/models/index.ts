@@ -8,6 +8,8 @@ export type Product = {
   discount: number;
 };
 
+
+
 export type User = {
   id: number;
   name: {
@@ -49,7 +51,7 @@ export type Error = {
 export type AppState = {
   recommendations: Product[];
   queryProducts: Product[];
-  cart: Product[];
+  cart: Cart[];
 };
 
 export type AppAction = {

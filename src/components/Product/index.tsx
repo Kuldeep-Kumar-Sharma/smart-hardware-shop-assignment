@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import { Card, Button, Row,Col } from "react-bootstrap";
 import { Product as ProductModel } from "../../models";
-
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/actions";
 import { Dispatch } from "redux";
@@ -15,29 +13,67 @@ export const Product = (props: OwnProps) => {
  
   return (
     <Container>
-      <Row xs={1} md={2} className="g-4">
-        {Array.from({ length: 4 }).map((_, idx) => (
-          <Col>
-            <Card>
-              <Card.Img variant="top" src={props.product.defaultImage} />
-              <Card.Body>
-                <Card.Title>{props.product.name}</Card.Title>
-                <Card.Text>{props.product.description}</Card.Text>
-                <Card.Text>Discount {props.product.discount + "%"}</Card.Text>
-                <Button onClick={()=>dispatch(addToCart(props.product))} variant="primary">
-                  EUR {" " + props.product.price + " "}Buy
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+        <Card>
+          <Img src={props.product.defaultImage} alt={props.product.name} />
+          <CardBody>
+            <h4>{props.product.name}</h4>
+            <Text>{props.product.description}</Text>
+            <Text>Discount {props.product.discount + "%"}</Text>
+            <Button onClick={() => dispatch(addToCart(props.product))}>
+              EUR {" " + props.product.price + " "}Buy
+            </Button>
+          </CardBody>
+        </Card>
     </Container>
   );
 };
 
 const Container = styled.div`
+  word-wrap: normal;
+  width: 22%;
+  margin-left: 1%;
+  word-break: break-all;
+  white-space: normal;
+  display: inline-block;
+  border-radius: 10px;
+`;
+
+const Img = styled.img`
   width: 100%;
-  margin-left: 5%;
-  margin-top: 3%;
+  height: 100%;
+`;
+
+const Card = styled.div`
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+
+const CardBody = styled.div`
+  padding: 10px;
+`;
+
+const Text = styled.p`
+  font-size: 10px;
+`;
+
+const Button = styled.button`
+  font-size: 10px;
+  padding: 10px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  border: 0px;
+  color: white;
+  font-weight: bold;
+  background: #f953c6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #f953c6,
+    #b91d73
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #f953c6,
+    #b91d73
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 `;
