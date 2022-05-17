@@ -37,18 +37,19 @@ export const Banner = () => {
     );
   }, [slides,recommendations]);
 
-  const showSlide = (index: number) => {
-    return slides[index];
-  };
+ 
 
   const [slide, setSlide] = useState<JSX.Element>(slides[0]);
   const [showIndex,setShowIndex] = useState<number>(0); 
 
+     const showSlide = (index: number) => {
+       return slides[index];
+     };
+    
     setInterval(() => {
       if (slides.length > 0) {
         setSlide(showSlide(showIndex));
-        setShowIndex(showIndex+1);
-        console.log(showIndex);
+        setShowIndex(showIndex + 1);
         if (showIndex >= slides.length) {
           setShowIndex(0);
         }
@@ -61,24 +62,26 @@ export const Banner = () => {
         {slide ? (
           slide
         ) : (
-            <>
-              
-              <Loader />
-              <h4>Fetching Recommmendations...</h4>
+          <>
+            <Loader />
+            <h4>Fetching Recommmendations...</h4>
           </>
         )}
       </SlideshowContainer>
     </Container>
   ) : (
-    <Loader />
+    <Container>
+      <Loader />
+    </Container>
   );
 };
 
 const Container = styled.div`
-  width: 50%;
-  border-radius: 10px;
-  margin-left: 5%;
+  width: 800px;
   margin-top: 3%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 `;
 
 const spinAnimation = keyframes`
@@ -112,7 +115,7 @@ const Img = styled.img`
 `;
 
 const SlideshowContainer = styled.div`
-  max-width: 1000px;
+  width: 100%;
   position: relative;
   margin: auto;
 `;

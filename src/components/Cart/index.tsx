@@ -1,39 +1,37 @@
 import styled from "styled-components";
 import { Product } from "../../models";
 
-import { useDispatch } from "react-redux";
-import { removeFromCart } from "../../redux/actions";
-import { Dispatch } from "redux";
-
 type OwnProps = {
   product?: Product;
   quantity: number;
+  removeFromCart: (product?:Product) => void;
 };
 export const Cart = (props: OwnProps) => {
-  const dispatch: Dispatch<any> = useDispatch();
   return (
     <Container>
-      {props.product &&
+      {props.product && (
         <Card>
           <Img src={props.product.defaultImage} alt={props.product.name} />
           <CardBody>
-            <h4>{props.product.name}</h4>
-            <h4>X{props.quantity}</h4>
-            <h4>Price: {props.quantity * props.product.price}</h4>
-            <Button onClick={() => dispatch(removeFromCart(props.product))}>
+            <Text>{props.product.name}</Text>
+            <Text>X{props.quantity}</Text>
+            <Text>Price: {props.quantity * props.product.price}</Text>
+            <Button onClick={()=>props.removeFromCart(props.product)}>
               Remove
             </Button>
           </CardBody>
         </Card>
-      }
+      )}
     </Container>
   );
 };
 
 const Container = styled.div`
   word-wrap: normal;
-  width: 80%;
-  margin-left: 1%;
+  width: 260px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
   word-break: break-all;
   white-space: normal;
   display: inline-block;
@@ -41,30 +39,35 @@ const Container = styled.div`
 `;
 
 const Img = styled.img`
-  width: 50%;
+  width: 100px;
+  height:80px;
 `;
 
 const Card = styled.div`
   display: flex;
   flex-direction: row;
+  width: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  margin-top: 10px;
-  margin-bottom: 10px;
 `;
 
 const CardBody = styled.div`
-  padding: 10px;
+  padding: 2px;
   display: flex;
   flex-direction: column;
 `;
 
-const Button = styled.button`
+const Text = styled.p`
   font-size: 10px;
-  padding: 10px;
-  height:50px;
-  width: 150px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  width: 190px;
+  margin: 3px;
+`
+
+const Button = styled.button`
+  font-size: 1px;
+  height:20px;
+  width: 100px;
+  font-size: 8px;
   border: 0px;
   color: white;
   font-weight: bold;

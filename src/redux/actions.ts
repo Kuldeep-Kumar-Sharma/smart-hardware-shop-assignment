@@ -13,7 +13,7 @@ export const addToCart = (product: Product) => {
 export const removeFromCart = (product?: Product) => {
   return {
     type: actionTypes.REMOVE_FROM_CART,
-    payload: product && 0,
+    payload: product,
   };
 };
 

@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { Cart as CartModel, AppState, Product } from "../../models/index";
-import { useSelector, shallowEqual } from "react-redux";
+import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { Cart  } from "../../components/Cart";
+import { Cart } from "../../components/Cart";
+import { removeFromCart } from "../../redux/actions";
+import { Dispatch } from "redux";
 
 export const CartItems = () => {
+  const dispatch: Dispatch<any> = useDispatch();
   const cartItems: readonly CartModel[] = useSelector(
     (state: AppState) => state.cart,
     shallowEqual
@@ -15,7 +18,11 @@ export const CartItems = () => {
     shallowEqual
   );
 
-  useEffect(() => {}, [cartItems[0].products]);
+  const removeFromCartonClick = (cartItem?: Product) => {
+    dispatch(removeFromCart(cartItem));
+  };
+
+  useEffect(() => {}, [cartItems]);
 
   const getProductsStart = (id: number) => {
     return products.find((prd) => prd.id === id);
@@ -25,14 +32,17 @@ export const CartItems = () => {
       {cartItems && cartItems.length > 0 ? (
         <>
           <h4>Cart Items</h4>
-          {cartItems.map((cartItem, index) =>
-            cartItem.products.map((cartProduct, index) => (
-              <Cart
-                key={index}
-                product={getProductsStart(cartProduct.id)}
-                quantity={cartProduct.quantity}
-              />
-            ))
+          {cartItems.map(
+            (cartItem, index) =>
+              cartItem.products &&
+              cartItem.products.map((cartProduct, index) => (
+                <Cart
+                  key={index}
+                  removeFromCart={removeFromCartonClick}
+                  product={getProductsStart(cartProduct.id)}
+                  quantity={cartProduct.quantity}
+                />
+              ))
           )}
         </>
       ) : (
@@ -43,10 +53,11 @@ export const CartItems = () => {
 };
 
 const Container = styled.div`
-  margin-top: 3%;
-  width: 30%;
-  float: right;
-  display: flex;
+  width: 300px;
+  overflow: auto;
+  height: 400px;
+  overflow: scroll;
+  justify-content: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
 `;

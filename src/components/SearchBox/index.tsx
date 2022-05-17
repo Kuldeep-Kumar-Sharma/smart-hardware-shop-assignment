@@ -12,7 +12,7 @@ export const SearchBox = () => {
 };
 
 const Container = styled.div`
-  width: 50%;
+  width: 100%;
   margin-left: 5%;
   margin-top: 3%;
 `;
@@ -26,7 +26,7 @@ const SearhInput = styled.input`
   border-radius: 0;
   border-bottom: 1px solid #ccc;
   cursor: pointer;
-  width: 50vw;
+  width: 90vw;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   &:focus {
