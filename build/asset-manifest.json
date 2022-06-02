@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Kuldeep-Kumar-Sharma/smart-hardware-shop-assignment/static/css/main.e6c13ad2.css",
+    "main.js": "/Kuldeep-Kumar-Sharma/smart-hardware-shop-assignment/static/js/main.cbc57c96.js",
+    "static/js/787.148604f5.chunk.js": "/Kuldeep-Kumar-Sharma/smart-hardware-shop-assignment/static/js/787.148604f5.chunk.js",
+    "index.html": "/Kuldeep-Kumar-Sharma/smart-hardware-shop-assignment/index.html",
+    "main.e6c13ad2.css.map": "/Kuldeep-Kumar-Sharma/smart-hardware-shop-assignment/static/css/main.e6c13ad2.css.map",
+    "main.cbc57c96.js.map": "/Kuldeep-Kumar-Sharma/smart-hardware-shop-assignment/static/js/main.cbc57c96.js.map",
+    "787.148604f5.chunk.js.map": "/Kuldeep-Kumar-Sharma/smart-hardware-shop-assignment/static/js/787.148604f5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.cbc57c96.js"
+  ]
+}
