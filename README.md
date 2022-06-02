@@ -1,6 +1,15 @@
+# In Nutshell
+ Deployed here : https://kuldeep-kumar-sharma.github.io/smart-hardware-shop-assignment/
+ - localserver need to be started to see the demo also - as I don't want to expose your assignment
+ - Adding to cart might take while to show, try adding more products - not able to fully understand why redux is that much time.
+ - Only one test case is added, but I might add more later
+ - Otherwise it works fine
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
