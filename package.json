@@ -2,7 +2,7 @@
   "name": "smart-hardware-shop",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/Kuldeep-Kumar-Sharma/smart-hardware-shop-assignment",
+  "homepage": "https://Kuldeep-Kumar-Sharma.github.io/smart-hardware-shop-assignment",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
@@ -32,7 +32,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -b main -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
