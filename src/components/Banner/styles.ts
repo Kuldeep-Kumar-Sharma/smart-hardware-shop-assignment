@@ -6,12 +6,14 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
 `;
 
 const Slides = styled.div`
     display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    margin-top: 10px;
     flex-direction: row;
 `;
 

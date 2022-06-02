@@ -18,7 +18,9 @@
         "react/react-in-jsx-scope": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
         "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": "error"
+        "@typescript-eslint/no-unused-vars": "error",
+        "react/prop-types": "off", // Since we do not use prop-types
+        "react/require-default-props": "off" // Since we do not use prop-types
     },
     "settings": {
         "import/resolver": {

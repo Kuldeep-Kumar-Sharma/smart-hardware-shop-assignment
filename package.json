@@ -2,6 +2,7 @@
   "name": "smart-hardware-shop",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/Kuldeep-Kumar-Sharma/smart-hardware-shop-assignment",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
@@ -30,6 +31,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -59,6 +62,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "gh-pages": "^4.0.0",
     "jest": "^28.1.0",
     "react-test-renderer": "^18.1.0"
   }
