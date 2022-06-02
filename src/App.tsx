@@ -1,10 +1,13 @@
-// MARK ==COMPONETS==
-import { Header } from "./components/Header";
-import { Banner } from "./components/Banner";
-import { SearchBox } from "./components/SearchBox";
-import { ProductList } from "./containers/ProductList";
-import { CartItems } from "./containers/CartItems";
-import styled from "styled-components";
+import Header from './components/Header';
+import Banner from './components/Banner';
+import SearchBox from './components/SearchBox';
+import ProductList from './containers/ProductList';
+import CartItems from './containers/CartItems';
+
+import {
+  ROW,
+  COL,
+} from './App.style';
 
 function App() {
   return (
@@ -31,16 +34,4 @@ function App() {
   );
 }
 
-const ROW = styled.div`
-  display: flex;
-  justify-content: stretch;
-  flex-wrap: wrap;
-  flex-direction: row;
-`;
-
-const COL = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-`;
 export default App;

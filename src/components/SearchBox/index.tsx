@@ -1,38 +1,34 @@
-import styled from "styled-components";
+import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
+import { Dispatch } from 'redux';
+import { getProductsStart } from '../../redux/actions';
 
-export const SearchBox = () => {
+import {
+  Container, Button, SearchInput,
+} from './styles';
+
+const SearchBox = () => {
+  const [query, setQuery] = useState<string>('');
+  const dispatch: Dispatch<any> = useDispatch();
+  const searchTheProduct = () => {
+    dispatch(getProductsStart(query));
+  };
+
   return (
     <Container>
-      <SearhInput
+      <SearchInput
+        onChange={(event) => setQuery(event.target.value)}
         type="text"
         placeholder="Search the products here..."
       />
+      <Button onClick={() => searchTheProduct()}>
+        Search
+        <FontAwesomeIcon height={100} width={100} icon={faSearch} />
+      </Button>
     </Container>
   );
 };
 
-const Container = styled.div`
-  width: 100%;
-  margin-left: 5%;
-  margin-top: 3%;
-`;
-
-const SearhInput = styled.input`
-  color: transparent;
-  font-family: Lato, sans-serif;
-  font-size: 1.35em;
-  padding: 0.35em;
-  border: 1px solid transparent;
-  border-radius: 0;
-  border-bottom: 1px solid #ccc;
-  cursor: pointer;
-  width: 90vw;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  &:focus {
-    border-bottom-color: #ccc;
-    width: 50vw;
-    color: #2b2b2b;
-    cursor: default;
-  }
-`;
+export default SearchBox;

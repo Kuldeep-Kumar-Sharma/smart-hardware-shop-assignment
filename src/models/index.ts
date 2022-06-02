@@ -8,8 +8,6 @@ export type Product = {
   discount: number;
 };
 
-
-
 export type User = {
   id: number;
   name: {
@@ -32,15 +30,17 @@ export type User = {
       quantity: number;
     }[];
   };
-  role: "ADMIN" | "CUSTOMER"; // Role is based on i % 2
+  role: 'ADMIN' | 'CUSTOMER'; // Role is based on i % 2
+};
+
+export type CartProducts = {
+    id: number;
+    quantity: number;
 };
 
 export type Cart = {
   id: number; // User id
-  products: {
-    id: number;
-    quantity: number;
-  }[];
+  products: CartProducts[];
 };
 
 export type Error = {
@@ -51,12 +51,14 @@ export type Error = {
 export type AppState = {
   recommendations: Product[];
   queryProducts: Product[];
+  loadingProducts: boolean;
   cart: Cart[];
+  productsFetchingError: string;
 };
 
 export type AppAction = {
   type: string;
-  payload: Product[] | Product | Cart | User | Error;
+  payload: Product[] | Product | Cart | User | string | boolean;
 };
 
 export type DispatchType = (args: AppAction) => AppAction;
